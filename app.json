@@ -1,39 +1,60 @@
 {
-  "expo": {
-    "name": "portalpaciente",
-    "slug": "portalpaciente",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "portalpaciente",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+	"expo": {
+		"name": "Portal Paciente",
+		"slug": "portalpacienteicr",
+		"version": "26.03.26",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "portalpaciente",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/images/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#191455"
+		},
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.icr.portalpaciente",
+			"buildNumber": "26032026"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"softwareKeyboardLayoutMode": "pan",
+			"versionCode": 26032026,
+			"permissions": [
+				"android.permission.POST_NOTIFICATIONS",
+				"android.permission.USE_BIOMETRIC",
+				"android.permission.USE_FINGERPRINT"
+			],
+			"package": "com.icr.portalpaciente",
+			"googleServicesFile": "./google-services.json"
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-notifications",
+				{
+					"icon": "./assets/images/notification-icon.png",
+					"color": "#191455"
+				}
+			],
+			"expo-font",
+			"expo-secure-store",
+			[
+				"expo-local-authentication",
+				{
+					"faceIDPermission": "O Portal do Paciente utiliza o FaceID para agilizar seu acesso."
+				}
+			],
+			"expo-sharing"
+		],
+		"extra": {
+			"eas": {
+				"projectId": "f2f844b8-cc0c-4faa-9a0d-f5bf75cea84d"
+			}
+		}
+	}
 }

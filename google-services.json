@@ -1,0 +1,49 @@
+{
+	"project_info": {
+		"project_number": "1061603457966",
+		"firebase_url": "https://portalpaciente-f4505.firebaseio.com",
+		"project_id": "portalpaciente-f4505",
+		"storage_bucket": "portalpaciente-f4505.firebasestorage.app"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:1061603457966:android:aa563cfef811253885263f",
+				"android_client_info": {
+					"package_name": "com.icr.portalpaciente"
+				}
+			},
+			"oauth_client": [],
+			"api_key": [
+				{
+					"current_key": "AIzaSyDM9gHCmbPUWL1lHOmsbhml_XjnfUbv_HY"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": []
+				}
+			}
+		},
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:1061603457966:android:9194f878da6679ec85263f",
+				"android_client_info": {
+					"package_name": "com.icr.portalpaciente.dev"
+				}
+			},
+			"oauth_client": [],
+			"api_key": [
+				{
+					"current_key": "AIzaSyDM9gHCmbPUWL1lHOmsbhml_XjnfUbv_HY"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": []
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}

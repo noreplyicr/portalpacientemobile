@@ -1,0 +1,497 @@
+#SLIP RETORNO
+POST http://webapiicr.icr.usp.br/api/portalpaciente/slipretorno
+#POST http://localhost:30107/api/portalpaciente/slipretorno
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{"nome": 3319013}
+###
+
+
+#PRONTUARIOS
+POST https://webapiicr.icr.usp.br/api/Prontuario/carregatreeprontuarios
+Content-Type: application/json
+
+{"id": 5953392 }
+###
+
+#BASE64
+POST https://webapiicr.icr.usp.br/api/Db/getOrientacao64
+#POST http://localhost:30107/api/Db/getOrientacao64
+Content-Type: application/json
+
+{"hashID": "TELEORIENTACAOEB392E9BB7F3CBB0" }
+###
+
+#BASE64
+POST https://webapiicr.icr.usp.br/api/Db/getOrientacao64
+#POST http://localhost:30107/api/Db/getOrientacao64
+Content-Type: application/json
+
+{"hashID": "TELEORIENTACAOEB392E9BB7F3CBB0" }
+###
+
+#RESULTADO DE EXAMES
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/exames
+#POST http://localhost:30107/api/PortalPaciente/exames/CarregarExames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+"paciente": {"id":4419880},
+"datainicial":"01/01/2025",
+"datafinal":"31/12/2025",
+"filtro":2
+ }
+###
+
+#RESULTADO DE EXAMES tree
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/examestree
+#POST http://localhost:30107/api/PortalPaciente/examestree
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+"paciente": {"id":5527225},
+"datainicial":"03/03/2026",
+"datafinal":"13/03/2026",
+"filtro":0
+}
+###
+
+
+
+#RESULTADO DE EXAMES tree
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/receitastree
+#POST http://localhost:30107/api/PortalPaciente/receitastree
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+"iddw":11195938
+}
+###
+
+
+#RESULTADO EXAME ICR
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/resultadoexames
+#POST http://localhost:30107/api/PortalPaciente/resultadoexames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+  "data":[{"solicitacao": 167625844, "tipo": "SIGH"}, {"solicitacao": 167625851, "tipo": "SIGH"}]
+}
+###
+
+#RESULTADO EXAME ICR
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/exames
+#POST http://localhost:30107/api/PortalPaciente/exames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+	"paciente": { "id": 3427201 },
+			"datainicial":"01/03/2026",
+			"datafinal":"13/03/2026",
+			"filtro":2
+}
+###
+
+
+#TELEFONES
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregaphones
+#POST http://localhost:30107/api/PortalPaciente/exames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+	"paciente": { "id": 3427201 }
+}
+###
+
+#ENDERECOS
+POST https://webapiicr.icr.usp.br/api/Paciente/carregaenderecospaciente
+#POST http://localhost:30107/api/PortalPaciente/exames
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+	"idpaciente": 3427201
+}
+###
+
+#LOGIN PORTAL
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/login
+#POST http://localhost:30107/api/PortalPaciente/login
+Content-Type: application/json
+
+{
+"matricula": "30231764855",
+"senha":"12345678"
+ }
+###
+
+#LOGIN PORTAL
+POST https://webapiicr.icr.usp.br/api/Paciente/carregapacienteicr
+//POST http://localhost:30107/api/Paciente/carregapacienteicr
+Content-Type: application/json
+
+{
+"nome": "3427201"
+ }
+###
+
+#AGENDAMENTOS
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
+POST http://localhost:30107/api/Paciente/carregaeagendapaciente
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+ "paciente":{"id": 03427201}
+ }
+###
+
+
+#AGENDA  LIVRE
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
+POST http://localhost:30107/api/Db/getAgendaLivreOCPGRADE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+    "dtIni":"18/08/2025",
+    "siglaEspecialidade": "AENF200"
+ }
+###
+
+#VERIFICA ATENDIMENTO
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
+POST http://localhost:30107/api/Db/getVerificaatendimento
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+    "id":13970871
+ }
+###
+
+#VERIFICA ATENDIMENTO
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
+POST http://localhost:30107/api/Db/verificamatricula
+Content-Type: application/json
+
+ {
+    "paciente":{"id":03427201},
+    "dtIni":"01/03/2025",
+    "dtFim":"03/03/2026",
+	 "agrupado": "false"
+ }
+###
+
+
+#VERIFICA ATENDIMENTO
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
+#POST http://localhost:30107/api/Db/verificamatricula
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+      "paciente":{"id":3635071},
+    "dtIni":"01/03/2026",
+    "dtFim":"13/03/2026",
+	 "agrupado": "false"
+ }
+###
+
+
+#AGENDA PACIENTE
+#POST https://webapiicr.icr.usp.br/api/Paciente/carregaeagendapaciente
+POST http://localhost:30107/api/Paciente/carregaeagendapaciente
+Content-Type: application/json
+
+ {
+    "paciente":{"id":3319013},
+    "agrupado":false,
+    "dtIni":"18/08/2025",
+    "dtFim":"18/08/2026"
+ }
+###
+
+#AGENDA PACIENTE
+#POST https://webapiicr.icr.usp.br/api/Paciente/carregaeagendapaciente
+POST https://webapiicr.icr.usp.br/api/Db/getGuiaFilePDF
+Content-Type: application/json
+
+ {
+    "hashID":"FILE148470AACFF8B481"
+ }
+###
+
+
+#AGENDA PACIENTE
+#POST https://webapiicr.icr.usp.br/api/Paciente/carregaeagendapaciente
+POST http://localhost:30107/api/Db/consultaenderecoviacep
+Content-Type: application/json
+
+ {
+    "cep":"69905136"
+ }
+###
+
+
+#LOCAIS DE NASCIMENTO
+#POST https://webapiicr.icr.usp.br/api/Paciente/carregaeagendapaciente
+POST http://localhost:30107/api/Db/consultaLocaisNascimento
+Content-Type: application/json
+
+ {
+    "cep":"69905136"
+ }
+###
+
+#RESET SENHA
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/resetsenha
+Content-Type: application/json
+
+ {
+    "matricula":"30231764855ddd"
+ }
+###
+
+
+#RESET SENHA
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/login
+Content-Type: application/json
+
+ {
+    "matricula":"30231764855",
+    "senha":"12345678"
+ }
+###
+
+
+#FAQ
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/getFaq
+Content-Type: application/json
+
+ {}
+###
+
+#FONES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/gettelefonesicr
+Content-Type: application/json
+
+ {}
+###
+
+
+#FONES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/preparoexames
+Content-Type: application/json
+
+ {
+   "letra":"A"
+ }
+###
+
+
+#FONES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/preparoexamessadt
+Content-Type: application/json
+
+ {
+   "letra":"A"
+ }
+###
+
+
+#FONES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/medicamentos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+   "letra":"A"
+ }
+###
+
+
+#ACOMPANHANTES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregacompanhantes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+    "paciente":{"id":3319013},
+    "tipoacomp": 1 //se precisar fazer um filtro
+ }
+###
+
+
+#ACOMPANHANTES
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregatipoacompanhantes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+ {
+ 
+ }
+###
+
+
+#SAVE ACOMPANHANTE
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/cadastraacompanhante
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+      "paciente": { "id": 3427201 },
+      "id": 0,
+      "nome": "ADASD",
+      "rg": "5456456654",
+      "cpf": "22222222222",
+      "idtipoacomp": 2,
+      "autorizado": 1
+ }
+###
+
+
+
+#EXCLUIR ACOMPANHANTE
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/excluiacompanhante
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+     "id": 323709
+ }
+###
+
+
+
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/Db/loadguiassadt
+Content-Type: application/json
+
+{
+      "paciente": { "id":3427201 }
+ }
+###
+
+
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/Db/loaddoctospaciente
+Content-Type: application/json
+
+{
+      "paciente": { "id":3520203 }
+ }
+###
+
+
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregareceitassighAsync
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+    //"iddw":5907482 
+    "id":15512315
+}
+###
+
+#POST http://localhost:30107/api/PortalPaciente/login
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregareceitasighAsync
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+    //"iddw":5907482 
+    "id":15512315
+}
+###
+
+
+# Primeira Requisição
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/carregapassagens
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+  "paciente": { "id": 3520203 }
+}
+
+###
+
+# Segunda Requisição
+POST https://webapiicr.icr.usp.br/api/Sigma/tfd
+ #POST http://localhost:30107/api/Sigma/tfd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+  "paciente": { "id": 3520203 },
+  "dtIni": "17/02/2026",
+  "dtFim": "19/03/2026",
+  "exibirCID":true
+}
+###
+
+
+### Disparar Notificação Push via Expo API
+POST https://exp.host/--/api/v2/push/send
+Content-Type: application/json
+
+{
+  "to": "ExponentPushToken[Unms4sPvzQzFlHxV8ERj34]",
+  "title": "ICR",
+  "body": "Agora com a chave FCM V1 ativa!",
+  "sound": "default",
+  "priority": "high"
+}
+
+###
+
+
+POST http://localhost:30107/api/PortalPaciente/alterasenha
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/alterasenha
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+     "id": 03427201,
+	  "senha": "12345678rrr",
+ }
+###
+
+#POST http://localhost:30107/api/PortalPaciente/alterasenha
+POST https://webapiicr.icr.usp.br/api/PortalPaciente/alterasenhaconfirmacao
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+	"id": 3427201,
+   "senhaatual": "12345678",
+   "senha": "87654321",
+}
+###
+
+### Teste de Versão Android
+GET https://webapiicr.icr.usp.br/api/Db/getVersaoApp?plataforma=ios
+Content-Type: application/json
+
+### Teste de Versão iOS (Apple)
+GET https://webapiicr.icr.usp.br/api/Db/getVersaoApp?plataforma=android
+Content-Type: application/json
