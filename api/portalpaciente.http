@@ -495,3 +495,15 @@ Content-Type: application/json
 ### Teste de Versão iOS (Apple)
 GET https://webapiicr.icr.usp.br/api/Db/getVersaoApp?plataforma=android
 Content-Type: application/json
+
+
+### Teste de Versão Android
+#POST http://localhost:30107/api/PortalPaciente/alterasenha
+POST http://localhost:30107/api/PortalPaciente/posicaofila
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+	"id": 5574551
+}
+###

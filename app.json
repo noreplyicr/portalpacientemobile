@@ -2,7 +2,7 @@
 	"expo": {
 		"name": "Portal Paciente",
 		"slug": "portalpacienteicr",
-		"version": "26.03.26",
+		"version": "07.04.26",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"scheme": "portalpaciente",
@@ -15,7 +15,7 @@
 		"ios": {
 			"supportsTablet": true,
 			"bundleIdentifier": "com.icr.portalpaciente",
-			"buildNumber": "26032026"
+			"buildNumber": "20260407"
 		},
 		"android": {
 			"adaptiveIcon": {
@@ -23,7 +23,7 @@
 				"backgroundColor": "#ffffff"
 			},
 			"softwareKeyboardLayoutMode": "pan",
-			"versionCode": 26032026,
+			"versionCode": 20260407,
 			"permissions": [
 				"android.permission.POST_NOTIFICATIONS",
 				"android.permission.USE_BIOMETRIC",

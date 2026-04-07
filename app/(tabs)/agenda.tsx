@@ -373,7 +373,7 @@ export default function Agenda() {
 									</TouchableOpacity>
 								)}
 
-								{eHoje && item.linktermo && (
+								{item.linktermo && (
 									<TouchableOpacity
 										onPress={() => Linking.openURL(item.linktermo)}
 										className="flex-row items-center bg-teal-50/50 p-4 rounded-2xl mb-3 border border-teal-200"
