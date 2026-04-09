@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import {
 	Dimensions,
 	Image,
+	Keyboard,
 	KeyboardAvoidingView,
 	Linking,
 	Platform,
@@ -44,7 +45,9 @@ export default function LoginScreen() {
 	const { width } = Dimensions.get("window");
 	const COLUMN_WIDTH = (width - 60) / 3;
 
+	// Puxa a versão definida no app.config.js
 	const appVersion = Constants.expoConfig?.version || "2.0.4";
+
 	const { signIn, signInBiometric, checkAppVersion, handleUpdateApp } =
 		useAuth();
 
@@ -55,7 +58,7 @@ export default function LoginScreen() {
 
 	const [modalConfig, setModalConfig] = useState({
 		visible: false,
-		type: "info" as "success" | "error" | "info", // Permita os 3 tipos aqui
+		type: "info" as "success" | "error" | "info",
 		title: "",
 		message: "",
 		onClose: () => {},
@@ -72,17 +75,24 @@ export default function LoginScreen() {
 	});
 
 	useEffect(() => {
-		// ... listeners de teclado ...
+		const keyboardDidShowListener = Keyboard.addListener(
+			"keyboardDidShow",
+			() => setKeyboardVisible(true),
+		);
+		const keyboardDidHideListener = Keyboard.addListener(
+			"keyboardDidHide",
+			() => setKeyboardVisible(false),
+		);
 
 		const initialize = async () => {
 			try {
-				// 1. AsyncStorage
+				// 1. Carregar matrícula salva
 				const saved = await AsyncStorage.getItem("@user_matricula").catch(
 					() => null,
 				);
 				if (saved) setValue("matricula", saved);
 
-				// 2. Biometria
+				// 2. Verificar Biometria
 				const compatible = await LocalAuthentication.hasHardwareAsync().catch(
 					() => false,
 				);
@@ -91,37 +101,28 @@ export default function LoginScreen() {
 				);
 				setIsBiometricSupported(compatible && enrolled);
 
-				// 3. Verificação de Versão (Agora bloqueando o login)
+				// 3. Validação de Versão
 				if (typeof checkAppVersion === "function") {
-					try {
-						const isVersionValid = await checkAppVersion();
-						console.log("Versão válida?", isVersionValid);
+					const isVersionValid = await checkAppVersion();
 
-						// Mude de (1 === 1) para (!isVersionValid) quando acabar o teste
-						if (!isVersionValid) {
-							setModalConfig({
-								visible: true,
-								type: "info", // Certifique-se que no useState inicial o type aceite "info"
-								title: "Versão Desatualizada",
-								message:
-									"Sua versão atual não é mais compatível. Por favor, atualize o aplicativo para continuar acessando.",
-								onClose: () => {
-									if (handleUpdateApp) handleUpdateApp();
-									// Opcional: setModalConfig(prev => ({ ...prev, visible: false }));
-								},
-							});
-							return; // Bloqueia o restante do initialize
-						} // <--- FALTAVA FECHAR ESTA CHAVE AQUI
-					} catch (versionError) {
-						console.log(
-							"Falha ao verificar versão, mas segue o jogo.",
-							versionError,
-						);
+					// Bloqueio específico: Se for iOS e versão 93.0.0, trava na hora.
+					const isIosBlocked = Platform.OS === "ios" && appVersion === "93.0.0";
+
+					if (!isVersionValid || isIosBlocked) {
+						setModalConfig({
+							visible: true,
+							type: "info",
+							title: "Atualização Obrigatória",
+							message: isIosBlocked
+								? "A versão 93.0.0 para iOS não é mais suportada. Por favor, atualize o app na App Store."
+								: "Sua versão atual não é mais compatível. Por favor, atualize para continuar.",
+							onClose: () => {
+								if (handleUpdateApp) handleUpdateApp();
+							},
+						});
+						return; // Interrompe o fluxo de login
 					}
 				}
-
-				// Se chegou aqui, a versão está OK.
-				// Você pode colocar aqui qualquer lógica que finalize o carregamento (ex: setAppReady(true))
 			} catch (e) {
 				console.log("Erro no init do Login:", e);
 			}
@@ -129,14 +130,30 @@ export default function LoginScreen() {
 
 		initialize();
 
-		// ... return cleanup ...
-	}, []);
+		return () => {
+			keyboardDidShowListener.remove();
+			keyboardDidHideListener.remove();
+		};
+	}, [appVersion]);
 
 	const handleLogin = async (data: LoginData) => {
+		// Double-check de segurança no clique do botão
+		if (Platform.OS === "ios" && appVersion === "93.0.0") {
+			setModalConfig({
+				visible: true,
+				type: "info",
+				title: "Versão Obsoleta",
+				message: "Por favor, atualize o aplicativo para acessar sua conta.",
+				onClose: () => handleUpdateApp && handleUpdateApp(),
+			});
+			return;
+		}
+
 		setLoading(true);
 		try {
 			const userResponse = await signIn(data.matricula, data.senha);
 			await AsyncStorage.setItem("@user_matricula", data.matricula);
+
 			if (userResponse && Number(userResponse.primeiroacesso) === 0) {
 				router.replace("/alterar-senha");
 				return;
@@ -155,7 +172,6 @@ export default function LoginScreen() {
 		}
 	};
 
-	// --- LÓGICA DE BIOMETRIA COM AS MENSAGENS CORRIGIDAS ---
 	const handleBiometricAuth = async () => {
 		try {
 			const hasSavedPass = await SecureStore.getItemAsync("hcfm_bio_pass");
@@ -180,24 +196,19 @@ export default function LoginScreen() {
 				try {
 					const userResponse = await signInBiometric();
 
-					// CASO 1: Senha Resetada (Primeiro Acesso)
 					if (userResponse && Number(userResponse.primeiroacesso) === 0) {
-						setLoading(false); // Para o loading antes de mostrar o erro
+						setLoading(false);
 						await SecureStore.deleteItemAsync("hcfm_bio_pass");
 						setModalConfig({
 							visible: true,
 							type: "error",
 							title: "Senha Resetada",
 							message:
-								"Sua senha foi resetada pelo sistema. Por segurança, faça o login manual para criar uma nova senha.",
-							onClose: () => {
-								setModalConfig((p) => ({ ...p, visible: false }));
-								// Não navega, obriga o login manual
-							},
+								"Sua senha foi resetada. Faça o login manual para criar uma nova.",
+							onClose: () => setModalConfig((p) => ({ ...p, visible: false })),
 						});
 						return;
 					}
-
 					router.replace("/(tabs)");
 				} catch (e: any) {
 					setLoading(false);
@@ -207,7 +218,7 @@ export default function LoginScreen() {
 						type: "error",
 						title: "Acesso Alterado",
 						message:
-							"Sua senha foi alterada. Entre manualmente uma vez para reativar a biometria.",
+							"Sua senha foi alterada. Entre manualmente para reativar a biometria.",
 						onClose: () => setModalConfig((p) => ({ ...p, visible: false })),
 					});
 				} finally {
@@ -255,7 +266,7 @@ export default function LoginScreen() {
 				className="flex-1"
 			>
 				<ScrollView
-					scrollEnabled={isKeyboardVisible} // Trava a rolagem com teclado fechado
+					scrollEnabled={isKeyboardVisible}
 					contentContainerStyle={{
 						flexGrow: 1,
 						paddingHorizontal: 24,
@@ -308,6 +319,7 @@ export default function LoginScreen() {
 									color="#666"
 								/>
 								<Text className="text-gray-500 ml-2 text-xs">
+									{" "}
 									Esqueceu a senha?{" "}
 									<Text className="text-[#00877C] font-hcf-bold underline">
 										Toque aqui
