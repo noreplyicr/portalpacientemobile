@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import _ from "lodash";
 import React, { useState } from "react";
 import {
 	ScrollView,
@@ -22,6 +21,9 @@ export default function Perfil() {
 	const navigation = useNavigation<any>();
 	const { user, signOut } = useAuth();
 	const [modalConfirmSair, setModalConfirmSair] = useState(false);
+
+	// ADICIONE ESTA LINHA AQUI:
+	if (!user) return null;
 
 	const handleSair = () => {
 		setModalConfirmSair(false);
@@ -121,13 +123,11 @@ export default function Perfil() {
 						icon="card-outline"
 						title="CPF"
 						subtitle={
-							_(user?.cpf || "").size() === 11
+							user?.cpf && user?.cpf.length === 11
 								? user?.cpffinal
 								: "Acesse o portal pelo CPF"
 						}
-						onPress={() => {
-							navegarPara("cpf");
-						}}
+						onPress={() => navegarPara("cpf")}
 					/>
 					<View style={styles.separator} />
 

@@ -455,15 +455,27 @@ POST https://exp.host/--/api/v2/push/send
 Content-Type: application/json
 
 {
-  "to": "ExponentPushToken[Unms4sPvzQzFlHxV8ERj34]",
-  "title": "ICR",
-  "body": "Agora com a chave FCM V1 ativa!",
-  "sound": "default",
-  "priority": "high"
-}
+    "to": "ExponentPushToken[kc68k7NL3vWKGjRsCr3Ted]",
+    "title": "Portal Paciente ICr",
+    "body": "Seu token foi registrado com sucesso! 👍",
+    "sound": "default",
+    "priority": "high",
+    "channelId": "default"
+  }
 
 ###
 
+### Consultar Status da Entrega (Receipt)
+POST https://exp.host/--/api/v2/push/getReceipts
+Content-Type: application/json
+
+{
+  "ids": [
+    "019d6e64-7503-71ad-a99e-8bc79d137b56"
+  ]
+}
+
+###
 
 POST http://localhost:30107/api/PortalPaciente/alterasenha
 #POST https://webapiicr.icr.usp.br/api/PortalPaciente/alterasenha

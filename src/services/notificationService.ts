@@ -4,14 +4,13 @@ import { Platform } from "react-native";
 import { api } from "../config/api";
 
 export async function registerAndSavePushToken(pacienteId: string) {
-	// 1. TRAVA DE SEGURANÇA: Se estiver no Expo Go, para tudo aqui.
-	// Isso evita o erro de "Uncaught Error" e protege seu layout.
+	// 1. TRAVA DE SEGURANÇA: Expo Go não suporta FCM nativo customizado
 	if (Constants.appOwnership === "expo") {
 		return null;
 	}
 
 	try {
-		// 2. Verifica se temos permissão
+		// 2. Verifica permissão
 		const { status: existingStatus } =
 			await Notifications.getPermissionsAsync();
 		let finalStatus = existingStatus;
@@ -22,36 +21,56 @@ export async function registerAndSavePushToken(pacienteId: string) {
 		}
 
 		if (finalStatus !== "granted") {
-			console.log("Permissão de notificação negada.");
+			console.log("Push: Permissão negada pelo usuário.");
 			return null;
 		}
 
-		// 3. Obtém o token do Expo
-		// Certifique-se que o projectId está no seu app.json
-		const projectId =
-			Constants.expoConfig?.extra?.eas?.projectId ||
-			Constants.easConfig?.projectId;
+		// 3. Obtém o token com Timeout para não travar o app
+		// Se o Google não responder em 10s, ele lança um erro que cai no catch interno
+		const projectId = "f2f844b8-cc0c-4faa-9a0d-f5bf75cea84d";
 
-		const token = (
-			await Notifications.getExpoPushTokenAsync({
-				projectId,
-			})
-		).data;
+		const tokenPromise = Notifications.getExpoPushTokenAsync({ projectId });
+		const timeoutPromise = new Promise((_, reject) =>
+			setTimeout(() => reject(new Error("Timeout ao buscar token")), 10000),
+		);
 
-		console.log("Push Token Gerado:", token);
+		const response = await (Promise.race([
+			tokenPromise,
+			timeoutPromise,
+		]) as any);
+		const token = response.data;
 
-		// 4. Envia para o seu Backend
-		// Substitua pela sua chamada de API real
-		console.log("Enviando para o banco. ID:", pacienteId, "Token:", token);
-		await api.post("/tokendevice", {
-			paciente: { id: pacienteId },
-			vtoken: token,
-			device: Platform.OS,
-		});
+		if (token) {
+			console.log("Push Token Gerado:", token);
 
-		return token;
+			// 4. Envia para o Backend (com catch isolado para não afetar o app)
+			await api
+				.post("/tokendevice", {
+					paciente: { id: pacienteId },
+					vtoken: token,
+					device: Platform.OS,
+				})
+				.then(() => {
+					console.log("Push: Token salvo no servidor com sucesso.");
+				})
+				.catch((apiError) => {
+					console.log(
+						"Push: Erro ao salvar na API (Backend):",
+						apiError?.message,
+					);
+				});
+
+			return token;
+		}
+
+		return null;
 	} catch (error) {
-		console.log("Erro ao registrar push:", error);
+		// MOSTRA NO LOG: Para você saber o que houve
+		// NADA PRO USUÁRIO: O try/catch consome o erro e retorna null silenciosamente
+		console.log("--- Erro Silencioso ao registrar Push ---");
+		console.log(error);
+		console.log("------------------------------------------");
+
 		return null;
 	}
 }
