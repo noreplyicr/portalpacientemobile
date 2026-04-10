@@ -9,6 +9,9 @@
 			"distribution": "internal",
 			"android": {
 				"credentialsSource": "local"
+			},
+			"env": {
+				"NPM_CONFIG_LEGACY_PEER_DEPS": "1"
 			}
 		},
 		"preview": {
@@ -16,6 +19,9 @@
 			"android": {
 				"buildType": "apk",
 				"credentialsSource": "local"
+			},
+			"env": {
+				"NPM_CONFIG_LEGACY_PEER_DEPS": "1"
 			}
 		},
 		"production": {
@@ -23,6 +29,9 @@
 			"android": {
 				"buildType": "app-bundle",
 				"credentialsSource": "local"
+			},
+			"env": {
+				"NPM_CONFIG_LEGACY_PEER_DEPS": "1"
 			}
 		}
 	},
