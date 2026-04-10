@@ -293,14 +293,14 @@ export default function LoginScreen() {
 
 							<FormInput
 								name="matricula"
-								control={control}
+								control={control as any}
 								error={errors.matricula}
 								placeholder="Matrícula ou CPF"
 								iconName="user-circle-o"
 							/>
 							<FormInput
 								name="senha"
-								control={control}
+								control={control as any}
 								error={errors.senha}
 								placeholder="Senha"
 								iconName="lock"

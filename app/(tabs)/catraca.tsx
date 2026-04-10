@@ -345,7 +345,7 @@ export default function Catraca() {
 
 									<FormInput
 										name="nome"
-										control={control}
+										control={control as any}
 										error={errors.nome}
 										placeholder="Nome Completo"
 										autoCapitalize="words"
@@ -353,7 +353,7 @@ export default function Catraca() {
 									/>
 									<FormInput
 										name="rg"
-										control={control}
+										control={control as any}
 										error={errors.rg}
 										placeholder="RG"
 										autoCapitalize="characters"
@@ -361,7 +361,7 @@ export default function Catraca() {
 									/>
 									<FormInput
 										name="cpf"
-										control={control}
+										control={control as any}
 										error={errors.cpf}
 										placeholder="000.000.000-00"
 										keyboardType="numeric"

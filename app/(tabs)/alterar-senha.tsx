@@ -193,7 +193,7 @@ export default function AlterarSenha() {
 					{!isPrimeiroAcesso && (
 						<FormInput
 							name="senhatual"
-							control={control}
+							control={control as any}
 							error={errors.senhatual}
 							placeholder="Sua senha atual"
 							iconName="lock"
@@ -207,7 +207,7 @@ export default function AlterarSenha() {
 
 					<FormInput
 						name="senha"
-						control={control}
+						control={control as any}
 						error={errors.senha}
 						placeholder="Crie sua nova senha"
 						iconName="key"
@@ -220,7 +220,7 @@ export default function AlterarSenha() {
 
 					<FormInput
 						name="confirmasenha"
-						control={control}
+						control={control as any}
 						error={errors.confirmasenha}
 						placeholder="Confirme a nova senha"
 						iconName="check"

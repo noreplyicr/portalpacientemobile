@@ -526,7 +526,7 @@ export default function Agenda() {
 								</Text>
 								<FormInput
 									name="justificativa"
-									control={control}
+									control={control as any}
 									error={errors.justificativa}
 									multiline
 									numberOfLines={4}

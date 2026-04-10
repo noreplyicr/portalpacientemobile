@@ -234,7 +234,7 @@ export default function Telefones() {
 								<FormInput
 									label="Número com DDD"
 									name="numero"
-									control={control}
+									control={control as any}
 									placeholder="(00) 00000-0000"
 									keyboardType="numeric"
 									maxLength={15}

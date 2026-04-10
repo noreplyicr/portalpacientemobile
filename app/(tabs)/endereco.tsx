@@ -325,7 +325,7 @@ export default function Endereco() {
 										<FormInput
 											label="CEP"
 											name="cep"
-											control={control}
+											control={control as any}
 											error={errors.cep}
 											placeholder="00000-000"
 											keyboardType="numeric"
@@ -370,7 +370,7 @@ export default function Endereco() {
 										<FormInput
 											label="Número"
 											name="numero"
-											control={control}
+											control={control as any}
 											error={errors.numero}
 											placeholder="123"
 											keyboardType="numeric"
@@ -381,7 +381,7 @@ export default function Endereco() {
 										<FormInput
 											label="Complemento"
 											name="complemento"
-											control={control}
+											control={control as any}
 											error={errors.complemento}
 											placeholder="Apto, Bloco..."
 											iconName="info-circle"

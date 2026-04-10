@@ -1,9 +1,9 @@
-export default ({ config }) => {
-	// Detecta se é iOS. Se não for, assumimos Android por padrão para evitar o erro do 93.0.0
-	const isIOS =
-		process.env.EAS_BUILD_PLATFORM === "ios" || process.argv.includes("ios");
+export default ({ config, platform }) => {
+	// O EAS Build passa o argumento 'platform' para esta função.
+	// Se por algum motivo ele falhar, o process.env.EAS_BUILD_PLATFORM segura a onda.
+	const isIOS = platform === "ios" || process.env.EAS_BUILD_PLATFORM === "ios";
 
-	// Agora a lógica é invertida e mais segura
+	// Define a versão baseada na detecção acima
 	const appVersion = isIOS ? "93.0.0" : "09.04.26";
 
 	return {
@@ -11,7 +11,6 @@ export default ({ config }) => {
 		name: "Portal Paciente",
 		slug: "portalpacienteicr",
 		version: appVersion,
-
 		orientation: "portrait",
 		icon: "./assets/images/icon.png",
 		scheme: "portalpaciente",

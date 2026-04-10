@@ -124,7 +124,7 @@ export default function FaleConosco() {
 					<FormInput
 						label="Matrícula do Paciente"
 						name="matricula"
-						control={control}
+						control={control as any}
 						error={errors.matricula}
 						placeholder="000000"
 						keyboardType="numeric"
@@ -133,7 +133,7 @@ export default function FaleConosco() {
 					<FormInput
 						label="Nome do Paciente"
 						name="nome"
-						control={control}
+						control={control as any}
 						error={errors.nome}
 						placeholder="Nome Completo"
 					/>
@@ -141,7 +141,7 @@ export default function FaleConosco() {
 					<FormInput
 						label="E-mail do Paciente"
 						name="email"
-						control={control}
+						control={control as any}
 						error={errors.email}
 						placeholder="email@exemplo.com"
 						keyboardType="email-address"
@@ -151,7 +151,7 @@ export default function FaleConosco() {
 					<FormSelect
 						label="Motivo do Contato"
 						name="motivo"
-						control={control}
+						control={control as any}
 						error={errors.motivo}
 						options={motivos}
 					/>
@@ -159,7 +159,7 @@ export default function FaleConosco() {
 					<FormInput
 						label="Mensagem"
 						name="mensagem"
-						control={control}
+						control={control as any}
 						error={errors.mensagem}
 						placeholder="Como podemos ajudar?"
 						multiline

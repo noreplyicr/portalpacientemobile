@@ -237,7 +237,7 @@ export default function Emails() {
 							>
 								<FormInput
 									name="email"
-									control={control}
+									control={control as any}
 									error={errors.email}
 									placeholder="exemplo@email.com"
 									keyboardType="email-address"
@@ -248,7 +248,7 @@ export default function Emails() {
 
 								<FormInput
 									name="confirmMail"
-									control={control}
+									control={control as any}
 									error={errors.confirmMail}
 									placeholder="repita o e-mail"
 									keyboardType="email-address"

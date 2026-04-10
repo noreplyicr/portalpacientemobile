@@ -4,11 +4,11 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    Text,
-    View,
+	KeyboardAvoidingView,
+	Platform,
+	ScrollView,
+	Text,
+	View,
 } from "react-native";
 import * as z from "zod";
 
@@ -116,7 +116,7 @@ export default function CadastrarCpf() {
 				<View className="bg-white p-6 rounded-[35px] shadow-sm border border-gray-100">
 					<FormInput
 						name="cpf"
-						control={control}
+						control={control as any}
 						error={errors.cpf}
 						placeholder="000.000.000-00"
 						iconName="vcard-o"
