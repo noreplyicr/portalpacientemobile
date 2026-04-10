@@ -1,9 +1,19 @@
 export default ({ config, platform }) => {
-	// O EAS Build passa o argumento 'platform' para esta função.
-	// Se por algum motivo ele falhar, o process.env.EAS_BUILD_PLATFORM segura a onda.
-	const isIOS = platform === "ios" || process.env.EAS_BUILD_PLATFORM === "ios";
+	// Tenta identificar a plataforma por 3 vias diferentes para não ter erro
+	const isIOS =
+		platform === "ios" ||
+		process.env.EAS_BUILD_PLATFORM === "ios" ||
+		(process.env.EAS_BUILD_PROFILE &&
+			process.env.EAS_BUILD_PROFILE.includes("ios"));
 
-	// Define a versão baseada na detecção acima
+	const isAndroid =
+		platform === "android" ||
+		process.env.EAS_BUILD_PLATFORM === "android" ||
+		(process.env.EAS_BUILD_PROFILE &&
+			process.env.EAS_BUILD_PROFILE.includes("android"));
+
+	// Define a versão: Prioriza iOS, senão assume Android (ou vice-versa)
+	// Se isIOS for true, usa a versão de iOS. Se não, usa a de Android.
 	const appVersion = isIOS ? "93.0.0" : "09.04.26";
 
 	return {
