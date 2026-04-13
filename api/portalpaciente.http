@@ -455,7 +455,7 @@ POST https://exp.host/--/api/v2/push/send
 Content-Type: application/json
 
 {
-    "to": "ExponentPushToken[kc68k7NL3vWKGjRsCr3Ted]",
+    "to": "ExponentPushToken[r7bfL9I14eMOEYlwu8d9Fk]",
     "title": "Portal Paciente ICr",
     "body": "Seu token foi registrado com sucesso! 👍",
     "sound": "default",
@@ -471,7 +471,7 @@ Content-Type: application/json
 
 {
   "ids": [
-    "019d6e64-7503-71ad-a99e-8bc79d137b56"
+    "019d7867-421e-712e-adae-9dbe2051c6a9"
   ]
 }
 

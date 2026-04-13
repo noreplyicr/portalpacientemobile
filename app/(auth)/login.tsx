@@ -105,17 +105,13 @@ export default function LoginScreen() {
 				if (typeof checkAppVersion === "function") {
 					const isVersionValid = await checkAppVersion();
 
-					// Bloqueio específico: Se for iOS e versão 93.0.0, trava na hora.
-					const isIosBlocked = Platform.OS === "ios" && appVersion === "93.0.0";
-
-					if (!isVersionValid || isIosBlocked) {
+					if (!isVersionValid) {
 						setModalConfig({
 							visible: true,
 							type: "info",
 							title: "Atualização Obrigatória",
-							message: isIosBlocked
-								? "A versão 93.0.0 para iOS não é mais suportada. Por favor, atualize o app na App Store."
-								: "Sua versão atual não é mais compatível. Por favor, atualize para continuar.",
+							message:
+								"Sua versão atual não é mais compatível. Por favor, atualize para continuar.",
 							onClose: () => {
 								if (handleUpdateApp) handleUpdateApp();
 							},
@@ -137,18 +133,6 @@ export default function LoginScreen() {
 	}, [appVersion]);
 
 	const handleLogin = async (data: LoginData) => {
-		// Double-check de segurança no clique do botão
-		if (Platform.OS === "ios" && appVersion === "93.0.0") {
-			setModalConfig({
-				visible: true,
-				type: "info",
-				title: "Versão Obsoleta",
-				message: "Por favor, atualize o aplicativo para acessar sua conta.",
-				onClose: () => handleUpdateApp && handleUpdateApp(),
-			});
-			return;
-		}
-
 		setLoading(true);
 		try {
 			const userResponse = await signIn(data.matricula, data.senha);
