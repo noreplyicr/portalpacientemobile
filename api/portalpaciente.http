@@ -4,7 +4,7 @@ POST http://webapiicr.icr.usp.br/api/portalpaciente/slipretorno
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
-{"nome": 3319013}
+{"nome": 9524838}
 ###
 
 
@@ -38,12 +38,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhM
 Content-Type: application/json
 
 {
-"paciente": {"id":4419880},
-"datainicial":"01/01/2025",
-"datafinal":"31/12/2025",
-"filtro":2
+"paciente": {"id":4385499},
+"datainicial":"01/05/2026",
+"datafinal":"26/05/2026",
+"filtro":0
  }
 ###
+
+
+#RESULTADO DE EXAMES
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/exames
+GET https://webapiicr.icr.usp.br/api/PortalPaciente/colunas?owner=SIGH&tabela=LAB_EXAME_REQUERIDO
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+
+ }
+###
+
 
 #RESULTADO DE EXAMES tree
 POST https://webapiicr.icr.usp.br/api/PortalPaciente/examestree
@@ -127,8 +140,8 @@ POST https://webapiicr.icr.usp.br/api/PortalPaciente/login
 Content-Type: application/json
 
 {
-"matricula": "30231764855",
-"senha":"12345678"
+"matricula": "00006157241B",
+"senha":"LUIZA080"
  }
 ###
 
@@ -530,4 +543,16 @@ Content-Type: application/json
 {
 	"iddw": 13319028
 }
+###
+
+
+# Primeira Requisição
+GET  http://webapiicr.icr.usp.br/api/PortalPaciente/carregarmotivosreagenda
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
+Content-Type: application/json
+
+{
+
+}
+
 ###

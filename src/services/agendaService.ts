@@ -47,6 +47,7 @@ export const agendaService = {
 		img1: string,
 		img2: string,
 	) {
+		console.log(values.idmotivo);
 		return api.post(`/cadastrareagendamento`, {
 			idreagendamento: agendamento.idreagendamento,
 			id: agendamento.id,
@@ -54,6 +55,9 @@ export const agendaService = {
 			statusreagendar: 1,
 			data: agendamento.data,
 			horario: agendamento.horario,
+			motivosreagenda: {
+				idmotivo: values.idmotivo ? Number(values.idmotivo) : 0,
+			},
 			paciente: {
 				iddw: agendamento.paciente?.iddw,
 				nome: agendamento.paciente?.nome,
@@ -69,5 +73,10 @@ export const agendaService = {
 	// Remove/Cancela a solicitação
 	async removerSolicitacao(idreagendamento: number) {
 		return api.post(`/removereagendamento`, { idreagendamento });
+	},
+	// Adicione dentro do objeto agendaService
+	async getMotivosReagendamento() {
+		const resp = await api.get(`/carregarmotivosreagenda`); // Ajuste o endpoint conforme sua API
+		return resp.data.data || [];
 	},
 };

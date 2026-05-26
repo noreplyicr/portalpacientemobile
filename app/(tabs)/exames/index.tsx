@@ -40,6 +40,8 @@ interface DetalheExame {
 	linkimg: string;
 	linklaudo: string;
 	etiqueta: string;
+	dataprevisao?: string;
+	laboratorio?: string;
 }
 
 interface RegistroExame {
@@ -51,6 +53,8 @@ interface RegistroExame {
 	linkimg: string;
 	linklaudo: string;
 	etiqueta: string;
+	dataprevisao?: string;
+	laboratorio?: string;
 }
 
 const Tab = createMaterialTopTabNavigator();
@@ -265,6 +269,8 @@ function TelaResultados({ filtro }: { filtro: string }) {
 
 	const renderItem = ({ item }: { item: RegistroExame }) => {
 		const isLab = filtro === "0";
+
+		// --- CARD DE LABORATÓRIO (MANTIDO ORIGINAL) ---
 		if (isLab) {
 			return (
 				<TouchableOpacity
@@ -327,54 +333,70 @@ function TelaResultados({ filtro }: { filtro: string }) {
 			);
 		}
 
+		// --- CARD DE IMAGEM / OUTROS (ADAPTADO COM AS REGRAS DE STATUS) ---
 		return (
 			<View style={styles.card}>
-				{item.exames.map((ex, idx) => (
-					<View
-						key={idx}
-						style={[styles.cardRow, idx > 0 && styles.cardDivider]}
-					>
-						<View style={[styles.numberBadge, { backgroundColor: "#F1F5F9" }]}>
-							<MaterialCommunityIcons
-								name={ex.linkimg ? "image-outline" : "file-document-outline"}
-								size={22}
-								color="#1e1b54"
-							/>
-						</View>
+				{item.exames.map((ex, idx) => {
+					// Lógica de tratamento do status para os botões
+					const statusNormalizado = ex.status?.trim().toUpperCase() || "";
+					const isLiberado = statusNormalizado.includes("LIBERADO");
+					const temImagemNoStatus =
+						statusNormalizado.includes("IMAGEM DISPONIVEL");
 
-						<View style={styles.info}>
-							<Text style={styles.exameNomeDireto} numberOfLines={1}>
-								{ex.descricao || ex.etiqueta || "Exame"}
-							</Text>
-							<Text style={styles.status}>{item.data}</Text>
-						</View>
-
-						{/* --- ÁREA DE AÇÕES ALTERADA --- */}
+					return (
 						<View
-							style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+							key={idx}
+							style={[styles.cardRow, idx > 0 && styles.cardDivider]}
 						>
-							{ex.linkimg ? (
-								<ViewImageButton
-									onPress={() => verImagem(ex.linkimg)}
-									size={44} // Um pouco menor se quiser economizar espaço na linha
+							<View
+								style={[styles.numberBadge, { backgroundColor: "#F1F5F9" }]}
+							>
+								<MaterialCommunityIcons
+									name={ex.linkimg ? "image-outline" : "file-document-outline"}
+									size={22}
+									color="#1e1b54"
 								/>
-							) : null}
+							</View>
 
-							{/* Botão de PDF com Loading do Hook */}
-							<OpenFileButton
-								onPress={() => gerenciarLaudo(ex, "abrir")}
-								loading={loadingOpen}
-								progress={0} // Adicione isso (0 se não quiser mostrar progresso individual)
-							/>
+							<View style={styles.info}>
+								<Text style={styles.exameNomeDireto} numberOfLines={1}>
+									{ex.descricao || ex.etiqueta || "Exame"}
+								</Text>
+								<Text style={styles.status}>{item.data}</Text>
+							</View>
 
-							<ShareButton
-								onPress={() => gerenciarLaudo(ex, "compartilhar")}
-								loading={loadingshare}
-								progress={0} // Adicione isso
-							/>
+							{/* --- ÁREA DE AÇÕES --- */}
+							<View
+								style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+							>
+								{/* Só mostra botão de imagem se: Status OK + Filtro Imagem + Tem Link */}
+								{temImagemNoStatus && filtro === "1" && ex.linkimg && (
+									<ViewImageButton
+										onPress={() => verImagem(ex.linkimg)}
+										size={44}
+									/>
+								)}
+
+								{/* Só mostra PDF e Compartilhar se: Status contiver "LIBERADO" */}
+								{isLiberado && (
+									<>
+										<OpenFileButton
+											onPress={() => gerenciarLaudo(ex, "abrir")}
+											loading={loadingOpen}
+											progress={0}
+										/>
+
+										<ShareButton
+											onPress={() => gerenciarLaudo(ex, "compartilhar")}
+											loading={loadingshare}
+											progress={0}
+										/>
+									</>
+								)}
+							</View>
 						</View>
-					</View>
-				))}
+					);
+				})}
 			</View>
 		);
 	};
@@ -505,9 +527,36 @@ function TelaResultados({ filtro }: { filtro: string }) {
 												style={{
 													fontSize: 12,
 													color: isLiberado ? "#64748B" : "#E11D48",
+													fontWeight: isLiberado ? "normal" : "600",
+													marginTop: 2,
 												}}
 											>
-												{ex.status}
+												{isLiberado
+													? ex.status
+													: `Pendente (Previsão: ${
+															ex.dataprevisao &&
+															moment(ex.dataprevisao).isValid() &&
+															moment(ex.dataprevisao).year() > 1900 // Filtra datas "zeradas" como 0001
+																? moment(ex.dataprevisao).format("DD/MM/YYYY")
+																: "Não informada"
+														})`}
+												{/* Exibe o nome do laboratório e o alerta se existir dados */}
+												{ex.laboratorio && (
+													<>
+														{"\n"}
+														<Text
+															style={{ color: "#475569", fontWeight: "500" }}
+														>
+															{ex.laboratorio}
+														</Text>
+														{" - "}
+														<Text
+															style={{ fontWeight: "800", color: "#2563EB" }}
+														>
+															CHECAR RESULTADO NA ABA EXTERNOS
+														</Text>
+													</>
+												)}
 											</Text>
 										</View>
 									</TouchableOpacity>

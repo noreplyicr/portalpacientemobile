@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import {
 	ActivityIndicator,
 	Dimensions,
@@ -22,6 +22,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as z from "zod";
 
 import { ConfirmModal } from "@/src/components/ConfirmModal";
+import Select from "@/src/components/Dropdown";
 import { EmptyState } from "@/src/components/EmptyState";
 import { Footer } from "@/src/components/Footer";
 import { FormInput } from "@/src/components/FormInput";
@@ -35,6 +36,7 @@ import { agendaService } from "@/src/services/agendaService";
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const reagendamentoSchema = z.object({
+	motivoId: z.string().min(1, "Informe um motivo"),
 	justificativa: z
 		.string()
 		.min(5, "O motivo deve ter pelo menos 5 caracteres")
@@ -55,6 +57,9 @@ export default function Agenda() {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [confirmVisible, setConfirmVisible] = useState(false);
 	const [itemSelecionado, setItemSelecionado] = useState<any>(null);
+	const [motivos, setMotivos] = useState<{ label: string; value: string }[]>(
+		[],
+	);
 	const [statusModal, setStatusModal] = useState({
 		visible: false,
 		type: "success" as "success" | "error",
@@ -68,8 +73,11 @@ export default function Agenda() {
 		reset,
 		formState: { errors },
 	} = useForm<ReagendamentoFormData>({
-		resolver: zodResolver(reagendamentoSchema),
-		defaultValues: { justificativa: "" },
+		resolver: zodResolver(reagendamentoSchema) as any,
+		defaultValues: {
+			motivoId: "",
+			justificativa: "",
+		},
 	});
 
 	const verificarSeEHoje = (dataString: string) => {
@@ -104,11 +112,30 @@ export default function Agenda() {
 		carregar();
 	}, [carregar]);
 
+	useEffect(() => {
+		const carregarMotivos = async () => {
+			try {
+				const data = await agendaService.getMotivosReagendamento();
+				const formatados = data.map((m: any) => ({
+					label: m.descricao,
+					value: String(m.idmotivo),
+				}));
+				setMotivos(formatados);
+			} catch (e) {
+				console.error("Erro ao carregar motivos", e);
+			}
+		};
+		carregarMotivos();
+	}, []);
+
 	const onEnviarReagendamento = async (data: ReagendamentoFormData) => {
 		setLoading(true);
 		try {
 			await agendaService.saveReagendamento(
-				{ justificativa: data.justificativa },
+				{
+					justificativa: data.justificativa,
+					idmotivo: data.motivoId,
+				},
 				itemSelecionado,
 				"",
 				"",
@@ -312,7 +339,6 @@ export default function Agenda() {
 									</TouchableOpacity>
 								)}
 
-								{/* BOTÃO DE JEJUM: APARECE APENAS EM CONSULTA QUANDO É COLETA (COLL) */}
 								{filtro === "CONSULTA" &&
 									item.agenda?.nome?.includes("COLL") && (
 										<TouchableOpacity
@@ -342,8 +368,6 @@ export default function Agenda() {
 											/>
 										</TouchableOpacity>
 									)}
-
-								{/* --- LOGICA DOS LINKS DE TELEMEDICINA --- */}
 
 								{item.testeteleconsulta === 1 && (
 									<TouchableOpacity
@@ -523,6 +547,26 @@ export default function Agenda() {
 							<View className="p-3 flex-1">
 								<Text className="text-[#852D2D] font-hcf-bold text-sm mb-2 uppercase">
 									Qual o motivo de reagendar?
+								</Text>
+								<Controller
+									control={control}
+									name="motivoId"
+									render={({ field: { onChange, value } }) => (
+										<Select
+											items={motivos}
+											onChange={(item: any) => {
+												const val = item?.value || item?.idmotivo || item;
+												onChange(val);
+											}}
+											value={value}
+											placeholder="INFORME O MOTIVO"
+											errors={errors.motivoId?.message}
+										/>
+									)}
+								/>
+
+								<Text className="text-[#852D2D] font-hcf-bold text-sm mb-2 mt-4 uppercase">
+									Observações adicionais
 								</Text>
 								<FormInput
 									name="justificativa"

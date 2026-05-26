@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	// Adicionei o "./src/**/*.{js,jsx,ts,tsx}" para ele ler tudo dentro de src
+	darkMode: "class",
 	content: [
 		"./app/**/*.{js,jsx,ts,tsx}",
 		"./src/**/*.{js,jsx,ts,tsx}", // <--- ADICIONE ESTA LINHA

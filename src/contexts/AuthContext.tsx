@@ -73,6 +73,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 	};
 
 	async function checkAppVersion() {
+		// Se for Web, ignoramos a verificação e retornamos true (está tudo ok)
+		if (Platform.OS === "web") return true;
+
 		try {
 			const platformKey = Platform.OS;
 			const response = await apiDB.get(`/getVersaoApp`, {
@@ -81,7 +84,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
 			const versionNoBanco = response.data?.Table?.[0]?.VERSAO_MINIMA;
 
-			// Se não encontrar a versão no banco, libera por segurança
 			if (!versionNoBanco) return true;
 
 			const currentVersion =
@@ -89,12 +91,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 					? Constants.expoConfig?.ios?.buildNumber || "0"
 					: Constants.expoConfig?.version || "00.00.00";
 
-			// Retorna TRUE se forem iguais (está ok)
-			// Retorna FALSE se forem diferentes (vai "reclamar")
 			return currentVersion === versionNoBanco;
 		} catch (e) {
 			console.log("Erro na requisição de versão:", e);
-			// Em caso de erro de rede, costuma-se retornar true para não travar o usuário
 			return true;
 		}
 	}
