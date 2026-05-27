@@ -1,6 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as FileSystem from "expo-file-system";
+import { useLocalSearchParams } from "expo-router";
 import * as Sharing from "expo-sharing";
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
@@ -36,10 +37,18 @@ type AbaType = "GUIAS" | "LAUDOS" | "REC" | "TFD" | "DOCS";
 
 export default function Documentos() {
 	const { user } = useAuth();
+	const params = useLocalSearchParams();
 	const [abaAtiva, setAbaAtiva] = useState<AbaType>("GUIAS");
 	const [loading, setLoading] = useState(false);
 	const [dataSource, setDataSource] = useState<any[]>([]);
 	const [fetchingUrl, setFetchingUrl] = useState<string | number | null>(null);
+	const MAPA: any = {
+		Laudos: "LAUDOS",
+		TFD: "TFD",
+		Receitas: "REC",
+		"Guias Exame": "GUIAS",
+		Documentos: "DOCS",
+	};
 
 	const [errorModal, setErrorModal] = useState({
 		visible: false,
@@ -85,6 +94,15 @@ export default function Documentos() {
 			fetchDados();
 		}
 	}, [abaAtiva, user?.id, user?.iddw, dataInicio, dataFim]);
+
+	useEffect(() => {
+		if (params?.abaSelecionada) {
+			const aba = MAPA[String(params.abaSelecionada)];
+			if (aba) {
+				setAbaAtiva(aba as AbaType);
+			}
+		}
+	}, [params?.abaSelecionada]);
 
 	const fetchDados = async () => {
 		setLoading(true);
@@ -201,7 +219,7 @@ export default function Documentos() {
 							dialogTitle: "Visualizar Documento",
 							UTI: "com.adobe.pdf",
 						});
-						return; // Sucesso, interrompe aqui
+						return;
 					}
 				} catch (downloadErr) {
 					console.log("Falha no download, tentando abrir via navegador...");
@@ -212,7 +230,7 @@ export default function Documentos() {
 			action === "open" ? onOpen(finalUrl) : onShare(finalUrl);
 		} catch (err) {
 			console.error("Erro handleAction:", err);
-			onOpen(finalUrl); // Última tentativa: joga pro navegador
+			onOpen(finalUrl);
 		} finally {
 			setFetchingUrl(null);
 		}
@@ -262,6 +280,7 @@ export default function Documentos() {
 			<PageHeader titulo="MEUS DOCUMENTOS" subtitulo={user?.nome || "Paciente"}>
 				<View className="mt-6">
 					<SegmentedControl
+						key={abaAtiva}
 						valorAtual={abaAtiva}
 						onChange={(v: string) => setAbaAtiva(v as AbaType)}
 						opcoes={[

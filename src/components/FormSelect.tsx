@@ -1,7 +1,7 @@
-import { Picker } from "@react-native-picker/picker"; // npx expo install @react-native-picker/picker
 import React from "react";
 import { Control, Controller, FieldError } from "react-hook-form";
 import { StyleSheet, Text, View } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 interface FormSelectProps {
 	label: string;
@@ -28,24 +28,27 @@ export function FormSelect({
 				render={({ field: { onChange, value } }) => (
 					<View
 						style={[
-							styles.pickerWrapper,
+							styles.wrapper,
 							error ? styles.errorBorder : styles.normalBorder,
 						]}
 					>
-						<Picker
-							selectedValue={value}
+						<RNPickerSelect
 							onValueChange={onChange}
-							dropdownIconColor="#191455"
-						>
-							<Picker.Item label="SELECIONE UM MOTIVO" value="" color="#999" />
-							{options.map((opt) => (
-								<Picker.Item
-									key={opt.value}
-									label={opt.label}
-									value={opt.value}
-								/>
-							))}
-						</Picker>
+							value={value}
+							placeholder={{
+								label: "SELECIONE UM MOTIVO",
+								value: "",
+								color: "#999",
+							}}
+							items={options}
+							style={{
+								inputIOS: styles.input,
+								inputAndroid: styles.input,
+								placeholder: {
+									color: "#999",
+								},
+							}}
+						/>
 					</View>
 				)}
 			/>
@@ -56,7 +59,10 @@ export function FormSelect({
 }
 
 const styles = StyleSheet.create({
-	container: { marginBottom: 16 },
+	container: {
+		marginBottom: 16,
+	},
+
 	label: {
 		color: "#191455",
 		fontWeight: "bold",
@@ -64,14 +70,31 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		textTransform: "uppercase",
 	},
-	pickerWrapper: {
-		backgroundColor: "#F9F9F9",
+
+	wrapper: {
+		backgroundColor: "#FFFFFF",
 		borderRadius: 12,
-		borderWidth: 1,
-		overflow: "hidden",
+		paddingHorizontal: 12,
+		justifyContent: "center",
+		height: 48,
 	},
-	normalBorder: { borderColor: "#E0E0E0" },
-	errorBorder: { borderColor: "#EF4444" },
+
+	input: {
+		color: "#191455",
+		fontSize: 14,
+		paddingVertical: 10,
+	},
+
+	normalBorder: {
+		borderWidth: 1,
+		borderColor: "#E0E0E0",
+	},
+
+	errorBorder: {
+		borderWidth: 1,
+		borderColor: "#EF4444",
+	},
+
 	errorText: {
 		color: "#EF4444",
 		fontSize: 12,

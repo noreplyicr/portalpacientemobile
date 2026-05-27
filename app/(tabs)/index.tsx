@@ -34,7 +34,7 @@ const COLORS = {
 	hcf_teal: "#00877C",
 	hcf_teal_light: "#e6f3f2",
 };
-const COLUMN_WIDTH = (width - 60) / 3;
+const COLUMN_WIDTH = (width - 70) / 4;
 
 export default function Home() {
 	const { user, loading, updateUser } = useAuth();
@@ -48,6 +48,15 @@ export default function Home() {
 		title: "",
 		message: "",
 	});
+
+	// Altere de AbaType para string apenas para evitar erros de tipagem na Home
+	const TRADUCAO_ABAS: Record<string, string> = {
+		Laudos: "LAUDOS",
+		TFD: "TFD",
+		Receitas: "REC",
+		"Guias Exame": "GUIAS",
+		Documentos: "DOCS",
+	};
 
 	/* ESTADOS ADICIONADOS PARA O SELETOR */
 	const [showSelector, setShowSelector] = useState(false);
@@ -250,8 +259,28 @@ export default function Home() {
 	const servicos = [
 		{ title: "Exames", icon: "file-document-outline", route: "/exames" },
 		{ title: "Agenda", icon: "calendar-clock", route: "/agenda" },
-		{ title: "Perfil", icon: "account-circle-outline", route: "/perfil" },
 		{ title: "Remédios", icon: "pill", route: "/medicamentos" },
+		{ title: "Perfil", icon: "account-circle-outline", route: "/perfil" },
+		{
+			title: "Laudos",
+			icon: "clipboard-text-outline",
+			route: "/documentos",
+		},
+		{
+			title: "TFD",
+			icon: "clipboard-text-outline",
+			route: "/documentos",
+		},
+		{
+			title: "Receitas",
+			icon: "clipboard-text-outline",
+			route: "/documentos",
+		},
+		{
+			title: "Guias Exame",
+			icon: "clipboard-text-outline",
+			route: "/documentos",
+		},
 		{
 			title: "Documentos",
 			icon: "clipboard-text-outline",
@@ -381,9 +410,9 @@ export default function Home() {
 			<View style={{ flex: 1 }}>
 				<ScrollView
 					contentContainerStyle={{
-						paddingHorizontal: 20,
-						paddingVertical: 20,
-						paddingBottom: 100,
+						paddingHorizontal: 15, // Menos espaço nas laterais
+						paddingVertical: 10, // Menos espaço no topo
+						paddingBottom: 80,
 					}}
 					showsVerticalScrollIndicator={false}
 				>
@@ -391,16 +420,26 @@ export default function Home() {
 						{servicos.map((item, index) => (
 							<View
 								key={index}
-								style={{ width: COLUMN_WIDTH, marginBottom: 16 }}
+								style={{ width: COLUMN_WIDTH, marginBottom: 10 }}
 							>
 								<ServiceButton
 									title={item.title}
 									icon={item.icon as any}
-									onPress={() =>
-										item.route
-											? router.push(item.route as any)
-											: item.action?.()
-									}
+									onPress={() => {
+										if (item.route) {
+											// Se a rota for documentos, envia o título para selecionar a aba
+											if (item.route === "/documentos") {
+												router.push({
+													pathname: "/documentos",
+													params: { abaSelecionada: item.title },
+												} as any);
+											} else {
+												router.push(item.route as any);
+											}
+										} else {
+											item.action?.();
+										}
+									}}
 								/>
 							</View>
 						))}

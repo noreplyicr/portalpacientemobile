@@ -75,10 +75,14 @@ export default function AlterarSenha() {
 				if (isPrimeiroAcesso) return true;
 				return false;
 			};
+
+			// O tipo aqui é NativeEventSubscription
 			const subscription = BackHandler.addEventListener(
 				"hardwareBackPress",
 				onBackPress,
 			);
+
+			// A forma correta e tipada de limpar é esta:
 			return () => subscription.remove();
 		}, [isPrimeiroAcesso]),
 	);
