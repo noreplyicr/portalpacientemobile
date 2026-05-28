@@ -2,7 +2,7 @@
 	"expo": {
 		"name": "Portal Paciente",
 		"slug": "portalpacienteicr",
-		"version": "26.05.26",
+		"version": "27.05.26",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"scheme": "portalpaciente",
@@ -15,7 +15,7 @@
 		"ios": {
 			"supportsTablet": true,
 			"bundleIdentifier": "com.icr.portalpaciente",
-			"buildNumber": "94",
+			"buildNumber": "96",
 			"infoPlist": {
 				"ITSAppUsesNonExemptEncryption": false,
 				"NSCameraUsageDescription": "Este app precisa de acesso à câmera para que você possa tirar fotos dos seus documentos e anexá-los ao seu perfil.",
@@ -28,7 +28,7 @@
 				"backgroundColor": "#ffffff"
 			},
 			"softwareKeyboardLayoutMode": "pan",
-			"versionCode": 626052026,
+			"versionCode": 827052026,
 			"permissions": [
 				"android.permission.POST_NOTIFICATIONS",
 				"android.permission.USE_BIOMETRIC",

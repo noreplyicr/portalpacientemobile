@@ -105,8 +105,8 @@ export default function LoginScreen() {
 				if (typeof checkAppVersion === "function") {
 					const isVersionValid = await checkAppVersion();
 
-					//if (!isVersionValid) {
-					if (isVersionValid) {
+					if (!isVersionValid) {
+						//if (isVersionValid) {
 						setModalConfig({
 							visible: true,
 							type: "info",
