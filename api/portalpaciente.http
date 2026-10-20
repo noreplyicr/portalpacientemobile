@@ -87,27 +87,29 @@ Content-Type: application/json
 
 
 #RESULTADO EXAME ICR
-POST https://webapiicr.icr.usp.br/api/PortalPaciente/resultadoexames
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/resultadoexames
 #POST http://localhost:30107/api/PortalPaciente/resultadoexames
+POST https://apiicr.hc.fm.usp.br/api/PortalPaciente/resultadoexames
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
 {
-  "data":[{"solicitacao": 167625844, "tipo": "SIGH"}, {"solicitacao": 167625851, "tipo": "SIGH"}]
+  "data":[{"solicitacao": 34542666, "tipo": "ICR"}]
 }
 ###
 
 #RESULTADO EXAME ICR
-POST https://webapiicr.icr.usp.br/api/PortalPaciente/exames
+POST https://apiicr.hc.fm.usp.br/api/PortalPaciente/exames
+#POST https://webapiicr.icr.usp.br/api/PortalPaciente/exames
 #POST http://localhost:30107/api/PortalPaciente/exames
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
 {
-	"paciente": { "id": 3427201 },
-			"datainicial":"01/03/2026",
-			"datafinal":"13/03/2026",
-			"filtro":2
+	"paciente": { "id": 4398666 },
+			"datainicial":"01/09/2026",
+			"datafinal":"24/09/2026",
+			"filtro":0
 }
 ###
 
@@ -146,7 +148,7 @@ Content-Type: application/json
 ###
 
 #LOGIN PORTAL
-POST https://webapiicr.icr.usp.br/api/Paciente/carregapacienteicr
+POST https://apiicr.hc.fm.usp.br/api/Paciente/carregapacienteicr
 //POST http://localhost:30107/api/Paciente/carregapacienteicr
 Content-Type: application/json
 
@@ -157,7 +159,7 @@ Content-Type: application/json
 
 #AGENDAMENTOS
 #POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
-POST http://localhost:30107/api/Paciente/carregaeagendapaciente
+POST https://apiicr.hc.fm.usp.br/api/Paciente/carregaeagendapaciente
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
@@ -169,12 +171,12 @@ Content-Type: application/json
 
 #AGENDA  LIVRE
 #POST https://webapiicr.icr.usp.br/api/PortalPaciente/agendamentos
-POST http://localhost:30107/api/Db/getAgendaLivreOCPGRADE
+POST https://apiicr.hc.fm.usp.br/api/Db/getAgendaLivreOCPGRADE
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
  {
-    "dtIni":"18/08/2025",
+    "dtIni":"18/08/2026",
     "siglaEspecialidade": "AENF200"
  }
 ###
@@ -383,7 +385,7 @@ Content-Type: application/json
 
 #EXCLUIR ACOMPANHANTE
 #POST http://localhost:30107/api/PortalPaciente/login
-POST https://webapiicr.icr.usp.br/api/PortalPaciente/excluiacompanhante
+POST http://localhost:30107/api/PortalPaciente/excluiacompanhante
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
@@ -395,17 +397,17 @@ Content-Type: application/json
 
 
 #POST http://localhost:30107/api/PortalPaciente/login
-POST https://webapiicr.icr.usp.br/api/Db/loadguiassadt
+POST http://localhost:30107/api/Db/loadguiassadt
 Content-Type: application/json
 
 {
-      "paciente": { "id":3427201 }
+      "paciente": { "id":03427201 }
  }
 ###
 
 
 #POST http://localhost:30107/api/PortalPaciente/login
-POST https://webapiicr.icr.usp.br/api/Db/loaddoctospaciente
+POST https://apiicr.hc.fm.usp.br/api/Db/loaddoctospaciente
 Content-Type: application/json
 
 {
@@ -449,8 +451,8 @@ Content-Type: application/json
 ###
 
 # Segunda Requisição
-POST https://webapiicr.icr.usp.br/api/Sigma/tfd
- #POST http://localhost:30107/api/Sigma/tfd
+POST https://apiicr.hc.fm.usp.br/api/Sigma/tfd
+#POST http://localhost:30107/api/Sigma/tfd
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 
@@ -547,7 +549,7 @@ Content-Type: application/json
 
 
 # Primeira Requisição
-GET  http://webapiicr.icr.usp.br/api/PortalPaciente/carregarmotivosreagenda
+GET  https://apiicr.hc.fm.usp.br/api/PortalPaciente/carregarmotivosreagenda
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0NjI1MDlhMC0yYTQ2LTQ1M2EtYjU1My1lZTRiOWY0NjA2MjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYWNpZW50ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUSVNBUEkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkBBUFkyMDIwIiwiZXhwIjoyMDg5NDc1Njg0LCJpc3MiOiJJY3IyMDIwYXBpIiwiYXVkIjoiSWNyMjAyMGFwaSJ9.IZQsR34RT8oiVNVG8aujpWf42j-TRMn6MDw5OfojESU
 Content-Type: application/json
 

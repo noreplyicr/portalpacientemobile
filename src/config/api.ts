@@ -7,7 +7,7 @@ const isWeb = Platform.OS === "web";
 const STORAGE_KEY = "hcfm_user_data";
 
 export const api = axios.create({
-	baseURL: "https://webapiicr.icr.usp.br/api/PortalPaciente",
+	baseURL: "https://apiicr.hc.fm.usp.br/api/PortalPaciente",
 	timeout: 15000,
 	headers: {
 		"Content-Type": "application/json",
@@ -16,7 +16,7 @@ export const api = axios.create({
 });
 
 export const apiDB = axios.create({
-	baseURL: "https://webapiicr.icr.usp.br/api/db",
+	baseURL: "https://apiicr.hc.fm.usp.br/api/db",
 	timeout: 15000,
 	headers: {
 		"Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const apiDB = axios.create({
 });
 
 export const apiPaciente = axios.create({
-	baseURL: "https://webapiicr.icr.usp.br/api/Paciente",
+	baseURL: "https://apiicr.hc.fm.usp.br/api/Paciente",
 	timeout: 15000,
 	headers: {
 		"Content-Type": "application/json",
@@ -58,6 +58,10 @@ api.interceptors.request.use(
 				if (parsed.token) {
 					config.headers.Authorization = `Bearer ${parsed.token}`;
 				}
+				config.headers["User-Agent"] =
+					"Mozilla/5.0 (Linux; Android 9; Mobile) AppleWebKit/537.36 Chrome/120.0.0.0 Mobile Safari/537.36";
+
+				config.headers["Accept"] = "*/*";
 			}
 		} catch (error) {
 			console.error("Erro ao recuperar token no interceptor", error);

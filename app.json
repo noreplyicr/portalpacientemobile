@@ -2,7 +2,7 @@
 	"expo": {
 		"name": "Portal Paciente",
 		"slug": "portalpacienteicr",
-		"version": "97.0.0",
+		"version": "22.09.26",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"scheme": "portalpaciente",
@@ -28,7 +28,7 @@
 				"backgroundColor": "#ffffff"
 			},
 			"softwareKeyboardLayoutMode": "pan",
-			"versionCode": 827052026,
+			"versionCode": 922092026,
 			"permissions": [
 				"android.permission.POST_NOTIFICATIONS",
 				"android.permission.USE_BIOMETRIC",

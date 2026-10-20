@@ -30,6 +30,34 @@ export default function FAQScreen() {
 	const router = useRouter();
 
 	useEffect(() => {
+		const testarAPI = async () => {
+			try {
+				console.log("========== TESTE ICR ==========");
+
+				const resposta = await fetch(
+					"https://10.65.161.230/api/PortalPaciente/getFaq",
+					{
+						method: "GET",
+						headers: {
+							Accept: "application/json",
+						},
+					},
+				);
+
+				console.log("ICR STATUS:", resposta.status);
+
+				const texto = await resposta.text();
+
+				console.log("ICR RESPOSTA:", texto);
+			} catch (error) {
+				console.log("ICR ERRO:", error);
+			}
+		};
+
+		testarAPI();
+	}, []);
+
+	useEffect(() => {
 		const loadData = async () => {
 			try {
 				const data = await faqService.getFaq();
